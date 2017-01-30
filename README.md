@@ -1,12 +1,12 @@
 ##Spring Boot
 ### Initializr
-Gradle project with Spring Boot 1.4.4.RELEASE
-1. Web
-2. JAX-RS
-3. MySQL
-4. Lombok
-5. Flyway
-6. Thymeleaf (cuz why not add more new?)
+Gradle project with Spring Boot 1.4.4.RELEASE  
+1. Web  
+2. JAX-RS  
+3. MySQL  
+4. Lombok  
+5. Flyway  
+6. Thymeleaf (cuz why not add more new?)  
 
 ### Properties
 ```
@@ -40,7 +40,7 @@ buildscript {
 apply plugin: "org.flywaydb.flyway"
 ```
 ##Lombok
-Initially used Lombok @Getter and @Setter in domain objects but replaced with @Data.
+Initially used Lombok `@Getter` and `@Setter` in domain objects but replaced with `@Data`.  I was also able to use `@AllArgsConstructor`
 
 ##React
 
