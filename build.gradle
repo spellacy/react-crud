@@ -1,0 +1,54 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.4.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("mysql:mysql-connector-java:5.1.40")
+        classpath("org.springframework.boot:spring-boot-starter-jdbc:${springBootVersion}")
+        classpath("gradle.plugin.com.boxfuse.client:flyway-release:4.0.3")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: "org.flywaydb.flyway"
+
+jar {
+	baseName = 'react-crud'
+	version = '0.0.1-SNAPSHOT'
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+
+	compile('org.springframework.boot:spring-boot-starter-jersey')
+	compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-jdbc')
+	compile('mysql:mysql-connector-java:5.1.40')
+    compile('org.flywaydb:flyway-core')
+	compileOnly('org.projectlombok:lombok')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+//this is required to run from a cmdline gradle task
+flyway {
+    url = 'jdbc:mysql://localhost:3306/react-crud'
+    user = 'react-crud-user'
+    password = 'react-crud-user'
+    schemas = ['react-crud']
+    locations = ["filesystem:$project.projectDir/src/main/resources/db/migration"]
+}
+

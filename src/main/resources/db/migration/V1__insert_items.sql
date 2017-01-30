@@ -1,0 +1,1 @@
+insert into ITEM (name) values ('BAND AIDS');
